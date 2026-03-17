@@ -1,0 +1,82 @@
+PTS Athlete Dashboard — Build Progress
+Prototype Training Systems · Westborough, MA
+Last updated: March 16, 2026
+
+=============================================
+LIVE LINKS
+=============================================
+Dashboard:   https://suc31.github.io/pts-dashboard
+GitHub Repo: https://github.com/Suc31/pts-dashboard
+Google Sheet: https://docs.google.com/spreadsheets/d/1z9Ha1fUXkmDBRKhn5CNrvUyU93FjOVzVEnJp2qVa1Cc
+
+Athlete URLs:
+- Owen:     ?athlete=owen
+- Jason:    ?athlete=jason
+- Caroline: ?athlete=caroline
+- Ella:     ?athlete=ella
+- Giada:    ?athlete=giada
+- Steve:    ?athlete=steve
+- Greg:     ?athlete=greg
+
+=============================================
+TECH STACK
+=============================================
+Frontend:   Single HTML file (index.html) — all CSS + JS inline, no build step
+Hosting:    GitHub Pages (free, auto-deploys on push to main)
+Database:   Google Sheets (4 tabs) — published as CSV for reads
+Write-back: Google Apps Script webhook — receives POST, appends to Session Logs
+AI Coach:   Anthropic Claude API (claude-sonnet-4-20250514)
+Automation: Zapier — Phase 3, not yet built
+
+=============================================
+PHASE STATUS
+=============================================
+[x] Phase 1 — MVP (hardcoded demo data, all views)
+[x] Phase 2 — Live Data (Sheets connected, webhook, URL routing, AI active)
+[ ] Phase 3 — Athlete Portal (self-logging, feedback, progress charts)
+[ ] Phase 4 — AI Progression Engine (Claude reads last 3 sessions, suggests loads)
+[ ] Phase 5 — Family Dashboard (multiple members, Notion integration)
+
+=============================================
+COMPLETED WORK (Sessions 1-2)
+=============================================
+- Activated GitHub Pages on repo (was never enabled)
+- Fixed day calculation bug (Math.floor -> Math.ceil for session interval)
+- Built session picker navigation (prev/next arrows, TODAY badge, week/day display)
+- Fixed Save button to record the viewed session (not always today's)
+- Updated Google Apps Script webhook to support bulkWrite action (Version 2)
+- Added Jason Fam as new athlete with full 4-week program (160 rows)
+- Verified Jason's dashboard loads correctly at ?athlete=jason
+
+=============================================
+ATHLETES & PROGRAM STATUS
+=============================================
+Owen Silva        — Full program entered (88 rows, 4 weeks)
+                    GK, 18yo, 6'3" 200lbs, Off-Season Strength
+Jason Fam         — Full program entered (160 rows, 4 weeks x 5 days)
+                    CAM, 22yo, 5'6" 145lbs, Off-Season Strength, right knee history
+Caroline Queenan  — No workouts yet. In-Season Strength Maintenance, Mon/Fri
+Ella Rust         — No workouts yet. In-Season Strength & Recovery, HS center back
+Giada Califano    — No workouts yet. Youth Strength & ACL Resilience, 12yo
+Steve Cimino      — No workouts yet. General Strength
+Greg Califano     — No workouts yet. General Strength
+
+=============================================
+KNOWN ISSUES
+=============================================
+1. API key visible in public GitHub repo — mitigated by $5 credit cap
+   Fix: Cloudflare Worker proxy or GitHub Pro (private repo)
+2. Session log CSV doesn't refresh after save — needs manual page reload
+3. No athlete authentication — anyone with URL can submit logs
+   Fix: PIN or email login in Phase 3
+4. Zapier automations not built — no session complete notifications or weekly reports
+5. 5 athletes still missing workout programs
+
+=============================================
+NEXT STEPS
+=============================================
+1. Enter programs for remaining athletes (Caroline, Ella, Giada, Steve, Greg)
+2. Build Phase 3 — progress charts + feedback loop in athlete portal
+3. Build Phase 4 — AI reads last 3 sessions and suggests load progression
+4. Build Zapier flows — session complete alert, missed session alert, weekly email
+5. Secure API key (Cloudflare Worker or GitHub Pro)
